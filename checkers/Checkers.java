@@ -9,13 +9,13 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
     Graphics g;
 
     JTextArea msg=new JTextArea("Start a new game... Blue is to move first...");
-    ImageIcon redN=new ImageIcon(new ImageIcon(getClass().getResource("/images/red.png")).getImage());//red_normal.jpg
-    ImageIcon yellowN=new ImageIcon(new ImageIcon(getClass().getResource("/images/blue.png")).getImage());//yellow_normal.jpg
-    ImageIcon redK=new ImageIcon(new ImageIcon(getClass().getResource("/images/rs.jpg")).getImage());//red_king.jpg
-    ImageIcon yellowK=new ImageIcon(new ImageIcon(getClass().getResource("/images/bs.jpg")).getImage());//yellow_king.jpg
-    ImageIcon hlp=new ImageIcon(new ImageIcon(getClass().getResource("/images/help.jpg")).getImage());//help.jpg
-    ImageIcon snp=new ImageIcon(new ImageIcon(getClass().getResource("/images/sound.jpg")).getImage());//sound.jpg
-    ImageIcon mup=new ImageIcon(new ImageIcon(getClass().getResource("/images/mute.jpg")).getImage());//mute.jpg
+    ImageIcon redN=new ImageIcon(new ImageIcon(getClass().getResource("/images/red_normal.jpg")).getImage());
+    ImageIcon yellowN=new ImageIcon(new ImageIcon(getClass().getResource("/images/yellow_normal.jpg")).getImage());
+    ImageIcon redK=new ImageIcon(new ImageIcon(getClass().getResource("/images/red_king.jpg")).getImage());
+    ImageIcon yellowK=new ImageIcon(new ImageIcon(getClass().getResource("/images/yellow_king.jpg")).getImage());
+    ImageIcon hlp=new ImageIcon(new ImageIcon(getClass().getResource("/images/help.jpg")).getImage());
+    ImageIcon snp=new ImageIcon(new ImageIcon(getClass().getResource("/images/sound.jpg")).getImage());
+    ImageIcon mup=new ImageIcon(new ImageIcon(getClass().getResource("/images/mute.jpg")).getImage());
 
     JButton nwB=new JButton("New Game");
     JButton unB=new JButton("Undo");
