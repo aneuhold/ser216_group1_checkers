@@ -4,6 +4,7 @@
 bin
 .project
 .classpath
+*.ucls
 .idea/
 ser216_group1_checkers.iml
 out/production
