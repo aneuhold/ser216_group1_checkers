@@ -8,7 +8,7 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
 
     Graphics g;
 
-    JTextArea msg=new JTextArea("Start a new game... Blue is to move first...");
+    JTextArea msg=new JTextArea("Choose game options and click 'New Game'...");
     ImageIcon redN=new ImageIcon(new ImageIcon(getClass().getResource("/images/red_normal.jpg")).getImage());
     ImageIcon yellowN=new ImageIcon(new ImageIcon(getClass().getResource("/images/yellow_normal.jpg")).getImage());
     ImageIcon redK=new ImageIcon(new ImageIcon(getClass().getResource("/images/red_king.jpg")).getImage());
@@ -521,6 +521,8 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
                 g.fillRect(50*square[0],50*square[1],50,50);
                 drawCheckers();
                 break;
+            case CheckerMove.illegalMove:
+                showIllegalMoveStatus();
 			}
         }
 	}
@@ -543,22 +545,31 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
     public void mouseExited(MouseEvent e) {
     }
 
+    private void showIllegalMoveStatus() {
+        if (CheckerMove.canCapture(board, toMove)) {
+            msg.setText("Invalid move...you must take available jump!");
+        }
+        else {
+            msg.setText("Select a valid tile!");
+        }
+    }
+
     private void showStatus() {       //prints msgs to the statuss bar
         if (this.toMove == redNormal){
             msg.setText("Red to move");
         }
         else{
-            msg.setText("Blue to move");
+            msg.setText("Yellow to move");
         }
 
         if (loser == redNormal && won==0){
-            msg.setText("Blue Wins!");
+            msg.setText("Yellow Wins!");
             try {
                 Thread.sleep(150);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            new GameWin("Blue",this.getLocationOnScreen());
+            new GameWin("Yellow",this.getLocationOnScreen());
             won=1;
             undoCount=0;
             newGame();

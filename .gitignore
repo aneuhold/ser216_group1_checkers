@@ -6,4 +6,5 @@ bin
 .classpath
 .idea/
 ser216_group1_checkers.iml
-out/production
+out/
+META-INF/
