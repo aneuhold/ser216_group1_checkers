@@ -552,7 +552,7 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
             msg.setText("Invalid move...you must take available jump!");
         }
         else {
-            msg.setText("Select a valid tile!");
+            msg.setText("Invalid move!");
         }
     }
 
