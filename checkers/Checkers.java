@@ -412,13 +412,10 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
 				loser = redNormal;
 			else
 			{
-                CheckerMove.moveComputer(board, result);
 
-                if (loser == empty){
-                    new PlaySound("sounds/comPlay.wav").start();
-                    play();
-                }
+                moveComputer(result);
                 this.toMove = yellowNormal;
+
 			}
 		}
 
@@ -432,13 +429,10 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
 				loser = yellowNormal;
 			else
 			{
-                CheckerMove.moveComputer(board, result);
-                if (loser == empty){
-                    new PlaySound("sounds/comPlay.wav").start();
-                    play();
-                }
 
+			    moveComputer(result);
 				this.toMove = redNormal;
+
 			}
 		}
 		else
@@ -458,6 +452,14 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
 
         showStatus();
 	}
+
+	private void moveComputer(int[] result) {
+        CheckerMove.moveComputer(board, result);
+        if (loser == empty){
+            new PlaySound("sounds/comPlay.wav").start();
+            play();
+        }
+    }
 
     private boolean isPossibleSquare(int i, int j) {
 		return (i+j)%2 == 1;
