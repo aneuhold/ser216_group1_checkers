@@ -33,15 +33,15 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
     Help hp=new Help();
 
     JLabel mode=new JLabel("Mode");
-    JLabel col=new JLabel("Colour");
+    JLabel col=new JLabel("Color");
     JLabel diff=new JLabel("Difficulty Level");
     JLabel rp=new JLabel();
-    JLabel rpt=new JLabel("Your Piece");
-    JLabel bpt=new JLabel("Opponent's Piece");
+    JLabel rpt=new JLabel("Opponent's Piece");
+    JLabel bpt=new JLabel("Your Piece");
     JLabel bp=new JLabel();
     JLabel rk=new JLabel();
-    JLabel rkt=new JLabel("Your King");
-    JLabel bkt=new JLabel("Opponent's King");
+    JLabel rkt=new JLabel("Opponent's King");
+    JLabel bkt=new JLabel("Your King");
     JLabel bk=new JLabel();
 
     JComboBox level=new JComboBox();
@@ -261,6 +261,17 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
         }
         if(e.getActionCommand().equalsIgnoreCase("New Game")){
             new PlaySound("sounds/button.wav").start();
+            if (c1.isSelected()) {
+                rpt.setText("Your Piece");
+                rkt.setText("Your King");
+                bpt.setText("Opponent's Piece");
+                bkt.setText("Opponent's King");
+            } else {
+                bpt.setText("Your Piece");
+                bkt.setText("Your King");
+                rpt.setText("Opponent's Piece");
+                rkt.setText("Opponent's King");
+            }
             newGame();
         }
         if(e.getActionCommand().equalsIgnoreCase("Undo") && undoCount>3){
