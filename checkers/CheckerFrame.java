@@ -14,7 +14,7 @@ public class CheckerFrame extends JFrame implements ActionListener{
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
             SwingUtilities.updateComponentTreeUI(this); //changing the appearence of the frame
         }
-        catch (Exception e) {
+        catch (Exception e) { 
            //no need to handle exception as it only affect the appearence
         }
         setupGUI();
@@ -26,8 +26,6 @@ public class CheckerFrame extends JFrame implements ActionListener{
         gmP.setBounds(0,0,508,401);//400,401
         //gmP.imageUpdate(ne, WIDTH, WIDTH, WIDTH, WIDTH, WIDTH)
         add(gmP);
-        stB.setHorizontalAlignment(SwingConstants.LEADING);
-        stB.setIcon(new ImageIcon(getClass().getResource("/images/checkersIcon.jpg")));
         stB.setBackground(Color.LIGHT_GRAY);
         stB.setCursor(new Cursor(Cursor.HAND_CURSOR));
         stB.setBounds(154,420,200,60);
@@ -38,7 +36,7 @@ public class CheckerFrame extends JFrame implements ActionListener{
 
         this.setIconImage(new ImageIcon(getClass().getResource("/images/icon.jpg")).getImage());
 
-        setSize(508,520);
+        setSize(508,550);
         setLocation((int)getToolkit().getScreenSize().getWidth()/2-254,(int)getToolkit().getScreenSize().getHeight()/2-310);
         setResizable(false);
         setVisible(true);
