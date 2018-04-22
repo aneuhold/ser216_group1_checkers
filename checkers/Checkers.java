@@ -51,10 +51,10 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
     int difficulty;
 
     static final int redNormal = 1;
-	static final int yellowNormal = 2;
-	static final int redKing = 3;
-	static final int yellowKing = 4;
-	static final int empty = 0;
+    static final int yellowNormal = 2;
+    static final int redKing = 3;
+    static final int yellowKing = 4;
+    static final int empty = 0;
 
     int currType;
     boolean movable;
@@ -73,7 +73,7 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
     boolean highlight=false;
 
     int toMove =redNormal;
-	int loser = empty;
+    int loser = empty;
 
     static boolean silent=false;
 
@@ -142,18 +142,18 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
         this.add(p1);
         this.add(p2);
 
-        col.setBounds(110,400,80,25);
-        //this.add(col);
+        col.setBounds(420,360,80,25);
+        this.add(col);
         c1.addActionListener(this);
         c2.addActionListener(this);
         c1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         c2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         colors.add(c1);
         colors.add(c2);
-        c1.setBounds(90,440,80,25);
-        c2.setBounds(90,420,80,25);
-        //this.add(c1);
-        //this.add(c2);
+        c1.setBounds(415,390,80,25);
+        c2.setBounds(415,418,80,25);
+        this.add(c1);
+        this.add(c2);
 
         level.setCursor(new Cursor(Cursor.HAND_CURSOR));
         level.addItemListener(this);
@@ -177,28 +177,28 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
         msg.setEnabled(false);
         this.add(msg);
 
-        rp.setBounds(10, 440, 50, 50);
+        rp.setBounds(10, 440, 40, 40);
         rp.setIcon(redN);
         this.add(rp);
-        rpt.setBounds(60, 450, 60, 20);
+        rpt.setBounds(60, 450, 150, 25);
         this.add(rpt);
 
-        bp.setBounds(110, 440, 50, 50);
+        bp.setBounds(250, 440, 40, 40);
         bp.setIcon(yellowN);
         this.add(bp);
-        bpt.setBounds(160, 450, 90, 20);
+        bpt.setBounds(300, 450, 150, 25);
         this.add(bpt);
 
-        rk.setBounds(250, 440, 50, 50);
+        rk.setBounds(10, 490, 40, 40);
         rk.setIcon(redK);
         this.add(rk);
-        rkt.setBounds(305, 450, 60, 20);
+        rkt.setBounds(60, 500, 150, 25);
         this.add(rkt);
 
-        bk.setBounds(365, 440, 50, 50);
+        bk.setBounds(250, 490, 40, 40);
         bk.setIcon(yellowK);
         this.add(bk);
-        bkt.setBounds(420, 450, 100, 20);
+        bkt.setBounds(300, 500, 150, 25);
         this.add(bkt);
 
         //g=getGraphics();
@@ -302,44 +302,44 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
 
 
         highlight = false;
-		incomplete = false;
+        incomplete = false;
 
         loser=empty;
 
-        for (int i=0; i<8; i++)                                  //applies values to the board
-		{
-			for (int j=0; j<8; j++)
-				board[i][j] = empty;
-
-			for (int j=0; j<3; j++)
-			    if ( isPossibleSquare(i,j) )
-				    board[i][j] =  redNormal;
-
-			for (int j=5; j<8; j++)
-			    if ( isPossibleSquare(i,j) )
-				    board[i][j] =  yellowNormal;
-		}
+        for (int i=0; i<8; i++) //applies values to the board
+        {
+    			for (int j=0; j<8; j++)
+    				board[i][j] = empty;
+    
+    			for (int j=0; j<3; j++)
+    			    if ( isPossibleSquare(i,j) )
+    				    board[i][j] =  redNormal;
+    
+    			for (int j=5; j<8; j++)
+    			    if ( isPossibleSquare(i,j) )
+    				    board[i][j] =  yellowNormal;
+        }
 
         toMove = yellowNormal;
 
         for(int i=0;i<8;i++){
-            System.arraycopy(board[i],0,preBoard1[i],0,8);                       //for undo
+            System.arraycopy(board[i],0,preBoard1[i],0,8);//for undo
             System.arraycopy(preBoard1[i],0,preBoard2[i],0,8);
             System.arraycopy(preBoard2[i],0,preBoard3[i],0,8);
             preToMove3=preToMove2=preToMove1=toMove;
         }
 
         if (selectedMode == 1 && selectedColor.equalsIgnoreCase("yellow"))
-		{
-            this.toMove = redNormal;
-            play();
-		}
-		else if (selectedMode==1 && selectedColor.equalsIgnoreCase("red"))
-		{
-           this.toMove = redNormal;
-            play();
-		}
-
+    		{
+                this.toMove = redNormal;
+                play();
+    		}
+    		else if (selectedMode==1 && selectedColor.equalsIgnoreCase("red"))
+    		{
+               this.toMove = redNormal;
+                play();
+    		}
+    
         update(getGraphics());
         drawCheckers();
         showStatus();
@@ -363,7 +363,7 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
        
     }
 
-    public void undo(){            //undo function
+    public void undo(){//undo function
         undoCount=1;
         for(int i=0;i<8;i++){
             System.arraycopy(preBoard3[i],0,board[i],0,8);              //copies previous board
