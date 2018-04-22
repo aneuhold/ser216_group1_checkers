@@ -147,20 +147,7 @@ public class CheckerMove {
                         break;
 				}
 
-                switch (piece)
-                {
-                    case Checkers.redNormal:
-                        if (endJ - srtJ == 1) return legalMove;       //Normal checkers only can go forward
-                        break;
-                    case Checkers.yellowNormal:
-                        if (endJ - srtJ == -1) return legalMove;
-                        break;
-                    case Checkers.redKing:
-                    case Checkers.yellowKing:
-                        if ( Math.abs(endJ - srtJ) == 1 ) return legalMove;    //Kings can go in any direction
-                        break;
-				}
-				return illegalMove;
+                return validateMoveDirection(piece, srtJ, endJ);
 
 			}
 
@@ -212,21 +199,27 @@ public class CheckerMove {
             int piece = board[srtI][srtJ];
             if ( Math.abs(srtI - endI) == 1 )
             {
-                switch (piece)
-                {
+
+                return validateMoveDirection(piece, srtJ, endJ);
+
+			}
+            return illegalMove;
+        }
+
+        static int validateMoveDirection(int piece, int srtJ, int endJ) {
+            switch (piece)
+            {
                 case Checkers.redNormal:
-					if (endJ - srtJ == 1) return legalMove;
-					break;
-                case Checkers.yellowNormal:
-					if (endJ - srtJ == -1) return legalMove;
+                    if (endJ - srtJ == 1) return legalMove;
                     break;
-				case Checkers.redKing:
+                case Checkers.yellowNormal:
+                    if (endJ - srtJ == -1) return legalMove;
+                    break;
+                case Checkers.redKing:
                 case Checkers.yellowKing:
                     if ( Math.abs(endJ - srtJ) == 1 ) return legalMove;
                     break;
-				}
-				return illegalMove;
-			}
+            }
             return illegalMove;
         }
 
