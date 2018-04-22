@@ -36,7 +36,7 @@ public class CheckerFrame extends JFrame implements ActionListener{
 
         this.setIconImage(new ImageIcon(getClass().getResource("/images/icon.jpg")).getImage());
 
-        setSize(508,550);
+        setSize(508,580);
         setLocation((int)getToolkit().getScreenSize().getWidth()/2-254,(int)getToolkit().getScreenSize().getHeight()/2-310);
         setResizable(false);
         setVisible(true);
