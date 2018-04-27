@@ -295,11 +295,11 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
         }
     }
 
-    public void newGame()	{                            //creates a new game
+    public void newGame()	{                            //Creates a new game.
 
-        //Yellow takes the first move in both modes
-        //If someone wants to move secondly, red has to be selected
-        //Yellow is always at the bottom of the board
+        //Yellow takes the first move in both modes.
+        //If someone wants to move secondly, red has to be selected.
+        //Yellow is always at the bottom of the board.
 
         selectedColor= c1.isSelected() ? "red" : "yellow";
         selectedMode=p1.isSelected()?1:2;
@@ -317,7 +317,7 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
 
         loser=empty;
 
-        for (int i=0; i<8; i++) //applies values to the board
+        for (int i=0; i<8; i++) //Applies values to the board.
         {
     			for (int j=0; j<8; j++)
     				board[i][j] = empty;
@@ -334,7 +334,7 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
         toMove = yellowNormal;
 
         for(int i=0;i<8;i++){
-            System.arraycopy(board[i],0,preBoard1[i],0,8);//for undo
+            System.arraycopy(board[i],0,preBoard1[i],0,8);//For undo.
             System.arraycopy(preBoard1[i],0,preBoard2[i],0,8);
             System.arraycopy(preBoard2[i],0,preBoard3[i],0,8);
             preToMove3=preToMove2=preToMove1=toMove;
@@ -356,7 +356,7 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
         showStatus();
     }
 
-    public void drawCheckers(){                   //paint checkers on the board
+    public void drawCheckers(){                   //Paint checkers on the board.
        g=getGraphics();
 
         for(int i=0;i<8;i++){
@@ -374,10 +374,10 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
        
     }
 
-    public void undo(){//undo function
+    public void undo(){//Undo function.
         undoCount=1;
         for(int i=0;i<8;i++){
-            System.arraycopy(preBoard3[i],0,board[i],0,8);              //copies previous board
+            System.arraycopy(preBoard3[i],0,board[i],0,8);//Copies previous board.
         }
         toMove=preToMove3;
         drawCheckers();
@@ -453,7 +453,7 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
 			else
 				this.toMove = redNormal;
         }
-		if (CheckerMove.noMovesLeft(board,this.toMove))  //
+		if (CheckerMove.noMovesLeft(board,this.toMove)) 
 		{
 			if (this.toMove == redNormal)
 				loser = redNormal;
@@ -493,8 +493,8 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
 		(board[square[0]][square[1]] == Checkers.yellowNormal || board[square[0]][square[1]] == Checkers.yellowKing))
 		{
 
-			// we don't want to lose the incomplete move info:
-			// only set new start variables if !incomplete
+			// We don't want to lose the incomplete move info:
+			// only set new start variables if !incomplete.
 			if (!incomplete)
 			{
 				highlight = true;
@@ -525,7 +525,7 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
 			case CheckerMove.incompleteMove:
 				incomplete = true;
 				highlight = true;
-				// the ending square is now starting square for the next capture
+				// The ending square is now starting square for the next capture.
 				startX = square[0];
 				startY = square[1];
                 update(g);
@@ -567,7 +567,7 @@ public class Checkers extends JPanel implements ActionListener, ItemListener, Mo
         }
     }
 
-    private void showStatus() {       //prints msgs to the statuss bar
+    private void showStatus() {       //Prints messages to the status bar.
         if (this.toMove == redNormal){
             msg.setText("Red to move");
         }
