@@ -1,14 +1,14 @@
 package checkers;
      
 import java.util.Vector;
-//game tree implementation
+//Game tree implementation.
 public class GameEngine {
 
     final static int inf = Integer.MAX_VALUE;
-    final static int normal = 100;         //one checker worth 100
-    final static int king=200;             //a King's worth
-    final static int pos=1;                //one position along the -j worth 1
-    final static int edge=10;               // effect of king being on the edge
+    final static int normal = 100;         //One checker worth 100.
+    final static int king=200;             //A King's worth.
+    final static int pos=1;                //One position along the -j worth 1.
+    final static int edge=10;               //Effect of king being on the edge.
 
 /*********************  Evaluation Function  **********************************
 
@@ -63,7 +63,7 @@ Weight of checkers
                 }
             }
         }
-        score += (int)(Math.random() * 10);                    //Adds a random weight
+        score += (int)(Math.random() * 10);                    //Adds a random weight.
 
         return score;
     }
@@ -86,9 +86,9 @@ Weight of checkers
         int[][] newBoard;
         int[] bestMove=new int[4];
 
-        Vector movesList;  //vector of 4x1 arrays
+        Vector movesList;  //Vector of 4x1 arrays.
 
-        //assumes that depth is never equal to maxDepth to begin with since chosenMove is not set here
+        //Assumes that depth is never equal to maxDepth to begin with since chosenMove is not set here.
 
         if (depth==maxDepth)
         {
@@ -107,21 +107,21 @@ Weight of checkers
             case 1:
               if (depth == 0)
               {
-                  // forced move: immediately return control
+                  // Forced move: immediately return control.
                 bestMove = (int[])movesList.elementAt(0);
                   System.arraycopy(bestMove, 0, move, 0, 4);
                 return 0;
               }
               else
               {
-                  // extend search since there is a forcing move
+                  // Extend search since there is a forcing move.
                   maxDepth += 1;
               }
             }
 
             for (int i=0;i<movesList.size();i++){
-                newBoard = copyBoard(board);                                     //board need not be touched
-                CheckerMove.moveComputer(newBoard, (int[])movesList.elementAt(i)); /*returns new_board (changing start and end coodinates
+                newBoard = copyBoard(board);                                     //Board need not be touched
+                CheckerMove.moveComputer(newBoard, (int[])movesList.elementAt(i)); /*returns new_board (changing start and end coordinates
                                                                                      and applying the move)*/
                 int temp[] = new int[4];
                 score= MinMax(newBoard, depth+1, maxDepth, temp, getOpponent(turn), counter, yellowBest, redBest);
@@ -156,7 +156,7 @@ Weight of checkers
         return bestScore;
     }
 
-      static int[][] copyBoard(int[][] board){       //uses to copy a double array
+      static int[][] copyBoard(int[][] board){       //Uses to copy a double array.
         int[][] copy = new int[8][8];
 
         for (int i=0; i<8; i++)
@@ -164,11 +164,11 @@ Weight of checkers
         return copy;
       }
     
-    static int getOpponent(int turn){                  //returns the opponent
+    static int getOpponent(int turn){                  //Returns the opponent.
          return turn==Checkers.yellowNormal ? Checkers.redNormal : Checkers.yellowNormal;
     }
 
-    static int getTurn(int turn) {                     //returns the turn
+    static int getTurn(int turn) {                     //Returns the turn.
           return CheckerMove.colour(turn)==Checkers.yellowNormal ? -inf : inf;
     }
 }
