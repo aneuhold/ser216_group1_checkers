@@ -15,7 +15,7 @@ public class GameWin extends JDialog{
 
 	private void setupGUI()
 	{
-        new PlaySound("sounds/Win.wav").start();
+        new PlaySound("/sounds/Win.wav").start();
         message.setFont(new Font("dialog",Font.BOLD,16));
         add(message);
 

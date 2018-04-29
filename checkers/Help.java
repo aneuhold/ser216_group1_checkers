@@ -35,14 +35,14 @@ public class Help extends JDialog {
     private void addText() {
         String str;
         try {
-            BufferedReader b=new BufferedReader(new FileReader(new File("guidance/HowToPlay.txt")));
+            BufferedReader b=new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/guidance/HowToPlay.txt")));
             try {
                 while((str=b.readLine())!=null)
                     txt.append(str+"\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
